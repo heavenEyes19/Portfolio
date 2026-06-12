@@ -3,6 +3,7 @@ import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { FaGithub } from "react-icons/fa";
 
 gsap.registerPlugin(useGSAP);
 
@@ -62,39 +63,58 @@ const Work = () => {
               category: "AI-Powered Advisory & Tracking Portal",
               tools: "React.js, Node.js, Express.js, MongoDB, Tailwind CSS, Socket.io, Groq API (Llama-4)",
               image: "/images/kya-mutual.png",
-            },
-            {
-              name: "KrishiBuddy",
-              category: "AI-Powered Smart Crop Advisory System",
-              tools: "React Native, Node.js, Express.js, PostgreSQL, Python, TensorFlow, Scikit-Learn, Mongo DB",
+              link: "https://mutual-fund-sahi-hai.vercel.app/",
+              github: "https://github.com/heavenEyes19/MutualFund-Sahi-Hai",
             },
             {
               name: "BikeRentLelo",
               category: "Smart Vehicle Rental & Delivery Platform",
               tools: "React.js, Node.js, Express.js, MongoDB, Socket.IO, Tailwind CSS, Groq API (LLaMA 3.1)",
+              image: "/images/bikerentlelo.png",
+              link: "https://bike-rental2.vercel.app/",
+              github: "https://github.com/heavenEyes19/BikeRentLelo",
+            },
+            {
+              name: "KrishiBuddy",
+              category: "AI-Powered Smart Crop Advisory System",
+              tools: "React Native, Node.js, Express.js, PostgreSQL, Python, TensorFlow, Scikit-Learn, Mongo DB",
+              link: "",
+              github: "",
             },
             {
               name: "Resume IQ",
               category: "AI Powered Resume Screening System",
               tools: "Python, Scikit-learn, NLP, Pandas, NumPy",
+              link: "",
+              github: "",
             },
             {
               name: "HathGhar",
               category: "E-commerce Marketplace Platform",
               tools: "React.js, Next.js, Tailwind CSS, Node.js, Express.js, PostgreSQL",
+              link: "",
+              github: "",
             },
             {
               name: "Cyber-Slayer",
               category: "Predictive Cybercrime Intelligence Platform",
               tools: "Next.js, Node.js, PostgreSQL, TensorFlow, AWS",
+              link: "",
+              github: "",
             },
             {
               name: "Real-time Chatting App",
               category: "Desktop Chat Application",
               tools: "Java Swing, Java AWT, Java Socket Programming",
+              link: "",
+              github: "",
             },
           ].map((project, index) => (
-            <div className="work-box" key={index}>
+            <div 
+              className="work-box" 
+              key={index}
+              style={{ display: 'flex' }}
+            >
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
@@ -106,8 +126,31 @@ const Work = () => {
                 </div>
                 <h4>Tools and features</h4>
                 <p>{project.tools}</p>
+                {project.github && (
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-link"
+                    style={{ 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: '8px', 
+                      marginTop: '20px',
+                      fontSize: '16px',
+                      color: 'var(--accentColor)',
+                      textDecoration: 'none',
+                      transition: 'all 0.3s ease',
+                      padding: '8px 16px',
+                      borderRadius: '8px',
+                      border: '1px solid var(--accentColor)'
+                    }}
+                  >
+                    <FaGithub size={20} /> View on GitHub
+                  </a>
+                )}
               </div>
-              <WorkImage image={project.image || "/images/placeholder.webp"} alt={project.name} />
+              <WorkImage link={project.link} image={project.image || "/images/placeholder.webp"} alt={project.name} />
             </div>
           ))}
         </div>
